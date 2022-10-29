@@ -96,7 +96,7 @@ return(
         (obj.Star==5) (<img src="https://assets.stickpng.com/images/58738756f3a71010b5e8ef44.png" class="img-fluid rounded-start" alt='..'/>)
         
         } */}
-        <img src={Src} class="img-fluid rounded-start" alt='..'/>
+        <img src={Src}  class="img-fluid rounded-start" alt='..'/>
       </div>
       <div class="col-md-8">
         <div class="card-body">
