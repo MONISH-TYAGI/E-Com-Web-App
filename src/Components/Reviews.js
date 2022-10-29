@@ -1,12 +1,16 @@
 import React from 'react'
 import { useEffect } from 'react';
 import { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import { db } from '../Config/Config';
 
 function Reviews({email}) {
     const [data,setData]=useState([]);
     const [boolVal,change]=useState(false);
+   let history=useHistory();
     useEffect(()=>{
+        if(email=="")
+        history.push("/")
         async function fetchData() {
         const citiesRef = db.collection('Reviews');
         const snapshot = await citiesRef.get();
@@ -16,8 +20,10 @@ function Reviews({email}) {
           localdata=[...localdata,doc.data()];
         });
          setData(localdata);
+         
         console.log("D->"+data.length);
     }
+    
     fetchData()
     },[boolVal])
     const [view,setView]=useState(false);
@@ -69,6 +75,7 @@ change(!boolVal);
       <input type="number" id="star" name="star" style={{margin:"1em"}} onChange={handleStar} value={star}></input>
       <button onClick={runFun}>ADD</button>
       <button onClick={showData}>Show</button>
+      
       {
        
        data.map((obj)=>{
@@ -100,7 +107,7 @@ return(
       </div>
       <div class="col-md-8">
         <div class="card-body">
-          <h5 class="card-title">{obj.Email}</h5>
+          <h5 class="card-title">{obj.User}</h5>
           <p class="card-text">{obj.Comment}</p>
           <p class="card-text"><small class="text-muted">Last updated on {obj.Time}</small></p>
         </div>
@@ -111,6 +118,7 @@ return(
 )
        })
       }
+     
       </div>
     </div>
   )
