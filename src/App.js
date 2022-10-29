@@ -11,12 +11,15 @@ import { Cart } from './Components/Cart'
 import { AddProducts } from './Components/AddProducts'
 import { Cashout } from './Components/Cashout'
 import 'font-awesome/css/font-awesome.min.css';
+import Orders from './Components/Orders'
+import Reviews from './Components/Reviews'
 
 
 export class App extends Component {
 
     state = {
         user: null,
+        email:""
     }
 
     componentDidMount() {
@@ -26,13 +29,15 @@ export class App extends Component {
             if (user) {
                 db.collection('SignedUpUsersData').doc(user.uid).get().then(snapshot => {
                     this.setState({
-                        user: snapshot.data().Name
+                        user: snapshot.data().Name,
+                        email:snapshot.data().Email
                     })
                 })
             }
             else {
                 this.setState({
-                    user: null
+                    user: null,
+                    email:""
                 })
             }
         })
@@ -57,6 +62,8 @@ export class App extends Component {
                             <Route path="/addproducts" component={AddProducts} />
                             {/* cashout */}
                             <Route path='/cashout' component={() => <Cashout user={this.state.user} />} />
+                            <Route path='/orders' component={() => <Orders email={this.state.email} />} />
+                            <Route path="/reviews" component={()=><Reviews email={this.state.email}/>} />
                             <Route component={NotFound} />
                         </Switch>
                     </BrowserRouter>

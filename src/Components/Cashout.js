@@ -55,7 +55,7 @@ const submitHandler=async(event)=>{
             if (user) {
                 const date = new Date();
                 const time = date.getTime();
-                db.collection('Buyer-info ' + user.uid).doc('_' + time).set({
+                db.collection('Buyer-info').doc(email).set({
                     BuyerName: name,
                     BuyerEmail: email,
                     BuyerCell: cell,
