@@ -13,6 +13,7 @@ import { Cashout } from './Components/Cashout'
 import 'font-awesome/css/font-awesome.min.css';
 import Orders from './Components/Orders'
 import Reviews from './Components/Reviews'
+import Test from './Components/Test'
 
 
 export class App extends Component {
@@ -64,6 +65,7 @@ export class App extends Component {
                             <Route path='/cashout' component={() => <Cashout user={this.state.user} />} />
                             <Route path='/orders' component={() => <Orders email={this.state.email} />} />
                             <Route path="/reviews" component={()=><Reviews email={this.state.email}/>} />
+
                             <Route component={NotFound} />
                         </Switch>
                     </BrowserRouter>

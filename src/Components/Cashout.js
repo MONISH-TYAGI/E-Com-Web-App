@@ -53,15 +53,19 @@ const submitHandler=async(event)=>{
         e.preventDefault();
         auth.onAuthStateChanged(user => {
             if (user) {
-                const date = new Date();
-                const time = date.getTime();
-                db.collection('Buyer-info').doc(email).set({
+                  let time = new Date().toLocaleTimeString('en-US');
+                  let date=new Date().toDateString();
+                  let id = date+time;
+                  console.log(id);
+                db.collection('Buyer-info'+email).doc(id).set({
                     BuyerName: name,
                     BuyerEmail: email,
                     BuyerCell: cell,
                     BuyerAddress: address,
                     BuyerPayment: totalPrice,
-                    BuyerQuantity: totalQty
+                    BuyerQuantity: totalQty,
+                    Date:date,
+                    Time:time
                 }).then(() => {
                     setCell('');
                     setAddress('');

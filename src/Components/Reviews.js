@@ -28,7 +28,7 @@ function Reviews({email}) {
     },[boolVal])
     const [view,setView]=useState(false);
     const [comment,setComment]=useState("");
-    const [star,setStar]=useState(0);
+    const [star,setStar]=useState();
     
     const runFun=async()=>{
         const date = new Date();
@@ -71,10 +71,10 @@ change(!boolVal);
     <div>
       <h1>Reviews</h1>
       <div>
-      <input type="text" id="comment" name="comment" style={{margin:"1em"}} onChange={handleComment} value={comment}></input>
-      <input type="number" id="star" name="star" style={{margin:"1em"}} onChange={handleStar} value={star}></input>
-      <button onClick={runFun}>ADD</button>
-      <button onClick={showData}>Show</button>
+      <input type="text" id="comment" name="comment" style={{margin:"1em",borderRadius:"1em",paddingLeft: "20px"}} onChange={handleComment} value={comment} placeholder="  Enter your Review"></input>
+      <input type="number" id="star" name="star" style={{margin:"1em",borderRadius:"1em",paddingLeft: "20px"}} onChange={handleStar} value={star} placeholder="  Give Rating Upto 5"></input>
+      <button className="review-button" onClick={runFun}>Done</button>
+    
       
       {
        

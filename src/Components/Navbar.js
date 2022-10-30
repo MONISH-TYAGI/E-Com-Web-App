@@ -38,11 +38,11 @@ export const Navbar = ({ user }) => {
             </div>}
             {user && <div className='rightside'>
                 
-            <span  ><Link to="addproducts" className='navlink'><button className="fa-solid fa-shop">Add</button></Link></span>
-            <span  ><Link to="reviews" className='navlink'><button className="fa-solid fa-shop">Reivews</button></Link></span>
-            <span  ><Link to="orders" className='navlink'><button className="fa-solid fa-shop">Orders</button></Link></span>
+            <span  ><Link to="addproducts" className='navlink'><button className="correct">Add</button></Link></span>
+            <span  ><Link to="reviews" className='navlink'><button className="correct">Reviews</button></Link></span>
+            <span  ><Link to="orders" className='navlink'><button className="correct">Orders</button></Link></span>
  <span><Link to="orders" className='navlink'>{user}</Link></span>
- <div className="number">
+  <div className="number">
  <span className='no-of-products'>{totalQty}</span>
                 <span><Link to="cartproducts" className='navlink'><Icon icon={cart} /></Link></span>
                 

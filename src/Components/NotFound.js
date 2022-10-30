@@ -3,7 +3,7 @@ import React from 'react'
 export const NotFound = () => {
     return (
         <div>
-            notfound
+           <h2>Not Found Error 404</h2>
         </div>
     )
 }
