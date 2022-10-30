@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useHistory } from 'react-router-dom';
 import { storage, db } from '../Config/Config'
 
 export const AddProducts = () => {
@@ -7,6 +8,7 @@ export const AddProducts = () => {
     const [productPrice, setProductPrice] = useState(0);
     const [productImg, setProductImg] = useState(null);
     const [error, setError] = useState('');
+    let history=useHistory();
 
     const types = ['image/png', 'image/jpeg']; // image types
 
@@ -25,12 +27,14 @@ export const AddProducts = () => {
     // add product
     const addProduct = (e) => {
         e.preventDefault();
+        // alert("wait");
         const uploadTask = storage.ref(`product-images/${productImg.name}`).put(productImg);
         uploadTask.on('state_changed', snapshot => {
             const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
             console.log(progress);
         }, err => setError(err.message)
             , () => {
+                alert("wait")
                 storage.ref('product-images').child(productImg.name).getDownloadURL().then(url => {
                     db.collection('Products').add({
                         ProductName: productName,
@@ -42,6 +46,7 @@ export const AddProducts = () => {
                         setProductImg('');
                         setError('');
                         document.getElementById('file').value = '';
+                        history.push("/");
                     }).catch(err => setError(err.message))
                 })
             })

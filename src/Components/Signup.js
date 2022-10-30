@@ -13,6 +13,7 @@ export const Signup = (props) => {
     // signup
     const signup = (e) => {
         e.preventDefault();
+        alert("Sign In");
         auth.createUserWithEmailAndPassword(email, password).then((cred) => {
             db.collection('SignedUpUsersData').doc(cred.user.uid).set({
                 Name: name,
@@ -23,6 +24,7 @@ export const Signup = (props) => {
                 setEmail('');
                 setPassword('');
                 setError('');
+               
                 props.history.push('/login');
             }).catch(err => setError(err.message));
         }).catch(err => setError(err.message));

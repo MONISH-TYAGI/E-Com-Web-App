@@ -1,5 +1,8 @@
 {
   "projects": {
-    "default": "ecommerce-with-react-2ac06"
-  }
+    "default": "e-commerce-website-537a4",
+    "development": "e-commerce-website-537a4"
+  },
+  "targets": {},
+  "etags": {}
 }
